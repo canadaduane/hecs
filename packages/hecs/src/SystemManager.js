@@ -44,7 +44,9 @@ export class SystemManager {
     for (let i = 0; i < this.systems.length; i++) {
       this.tick++
       const system = this.systems[i]
+      const before = performance.now()
       if (system.active) system.update(delta)
+      system.performance = performance.now() - before
     }
   }
 

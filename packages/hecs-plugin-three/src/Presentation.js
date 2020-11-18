@@ -16,6 +16,7 @@ export class Presentation {
     this.object3ds = []
     this.scene = options.scene || this.createScene()
     this.renderer = options.renderer || this.createRenderer()
+    this.renderer.info.autoReset = false
     this.camera = options.camera || this.createCamera()
     this.postprocess = !!options.postprocess
     if (this.postprocess) {
@@ -69,6 +70,7 @@ export class Presentation {
 
   render() {
     if (this.viewport) {
+      this.renderer.info.reset()
       if (this.postprocess) {
         this.composer.render()
       } else {
